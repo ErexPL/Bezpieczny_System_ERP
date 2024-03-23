@@ -1,0 +1,128 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: aliceblue;
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25%;
+    width: 100%;
+    height: 10vh;
+    font-size: 2vw;
+    background-color: darkslategrey;
+}
+
+h3 {
+    padding: 1.25%;
+    font-size: 1.5vw;
+    color: rgb(35, 35, 35);
+}
+
+div {
+    display: flex;
+    height: 90vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    min-height: 6.5vw;
+    margin: 4.5vh;
+    font-size: 1.3vw;
+    text-align: center;
+    background-color: dodgerblue;
+    text-decoration: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+a:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+a:nth-last-child(1) {
+    background-color: crimson;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+    width: 35%;
+    margin: 4.5vh;
+    padding: 4vh;
+    background-color: dodgerblue;
+    border-radius: 1vw;
+}
+
+label {
+    font-size: 1.2vw;
+}
+
+input, select, option {
+    width: 100%;
+    padding: 1vh;
+    font-size: 1.1vw;
+    border-radius: 1vw;
+    border: 1px solid #ccc;
+    color: rgb(35, 35, 35);
+}
+
+input:nth-last-child(1) {
+    width: 50%;
+    padding: 10px;
+    font-size: 1.2vw;
+    background-color: limegreen;
+    color: white;
+    border: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+input:nth-last-child(1):hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+table {
+    width: 35%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 0.2vw solid rgb(35, 35, 35);
+    font-size: 0.8vw;
+}
+
+th, td {
+    padding: 0.5vw;
+    text-align: left;
+    background-color: dodgerblue;
+}
+
+th {
+    background-color: limegreen;
+}
