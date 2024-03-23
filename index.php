@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./style.css">
-    <title>System ERP</title>
+    <title>Bezpieczny System ERP</title>
 </head>
 <body>
-    <h2>Wybierz moduł</h2>
+    <h2>Bezpieczny System ERP</h2>
     <div>
         <a href="./crm/crm.php">CRM</a>
         <a href="./sales/sales.php">Sprzedaż</a>
