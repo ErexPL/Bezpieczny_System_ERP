@@ -9,11 +9,11 @@
     <h2>Moduł CRM - Dodaj klienta</h2>
     <div>
         <form action="./crm-handler.php" method="post">
-            <label for="name">Imię:</label><br>
+            <label for="name">Imię i nazwisko:</label><br>
             <input type="text" id="name" name="name"><br><br>
             <label for="email">Adres e-mail:</label><br>
             <input type="email" id="email" name="email"><br><br>
-            <label for="subscription">Status subskrypcji:</label><br>
+            <label for="subscription">Subskrypcja:</label><br>
             <select id="subscription" name="subscription">
                 <option value="subscribed">Aktywna</option>
                 <option value="unsubscribed">Nieaktywna</option>

@@ -1,0 +1,31 @@
+ID,name,date,department,position,permissions
+61557fc68c596,John Smith,1985-03-15,Human Resources,Manager,admin
+61557fc68c59a,Alice Johnson,1990-05-20,Recruitment,Recruiter,user
+61557fc68c59e,Michael Williams,1988-12-10,Finance,Accountant,user
+61557fc68c5a2,Emily Brown,1987-08-25,Human Resources,HR Assistant,user
+61557fc68c5a6,James Jones,1992-04-30,IT,Software Developer,admin
+61557fc68c5aa,Sarah Davis,1989-11-05,Finance,Financial Analyst,user
+61557fc68c5ae,David Rodriguez,1986-09-18,Recruitment,Recruiter,user
+61557fc68c5b2,Emma Martinez,1991-07-12,IT,System Administrator,user
+61557fc68c5b6,Christopher Taylor,1984-06-22,Human Resources,HR Assistant,user
+61557fc68c5ba,Olivia Hernandez,1993-02-28,Finance,Financial Analyst,user
+61557fc68c5be,Michael Johnson,1995-11-20,Human Resources,Manager,admin
+61557fc68c5c2,Jennifer Brown,1983-08-15,Recruitment,Recruiter,user
+61557fc68c5c6,Matthew Davis,1987-06-10,Finance,Accountant,user
+61557fc68c5ca,Emily Wilson,1992-04-25,Human Resources,HR Assistant,user
+61557fc68c5ce,Samantha Miller,1989-10-08,IT,Software Developer,admin
+61557fc68c5d2,Daniel Thomas,1986-05-18,Finance,Financial Analyst,user
+61557fc68c5d6,Alexander Garcia,1991-03-22,Recruitment,Recruiter,user
+61557fc68c5da,Lauren Martinez,1985-02-10,IT,System Administrator,user
+61557fc68c5de,William Jackson,1988-09-02,Human Resources,HR Assistant,user
+61557fc68c5e2,Victoria Lee,1994-12-18,Finance,Financial Analyst,user
+61557fc68c5e6,Andrew Hernandez,1982-07-05,Human Resources,Manager,admin
+61557fc68c5ea,Abigail Thompson,1997-01-28,Recruitment,Recruiter,user
+61557fc68c5ee,Christopher White,1984-04-12,Finance,Accountant,user
+61557fc68c5f2,Sophia Lopez,1989-09-30,Human Resources,HR Assistant,user
+61557fc68c5f6,Matthew Lewis,1993-08-22,IT,Software Developer,admin
+61557fc68c5fa,Elizabeth Harris,1986-12-15,Finance,Financial Analyst,user
+61557fc68c5fe,Nicholas Clark,1991-06-08,Recruitment,Recruiter,user
+61557fc68c602,Ashley Young,1983-05-20,IT,System Administrator,user
+61557fc68c606,Hannah Martin,1990-02-02,Human Resources,HR Assistant,user
+61557fc68c60a,Brandon King,1995-11-10,Finance,Financial Analyst,user

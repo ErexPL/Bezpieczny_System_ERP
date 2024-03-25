@@ -8,8 +8,10 @@
 <body>
     <h2>Moduł HR</h2>
     <div>
-        <a href="#">Dodaj pracownika</a>
-        <a href="#">Wyświetl pracowników</a>
+        <a href="./hr-1.php">Dodaj pracownika</a>
+        <a href="./hr-handler.php?option=2">Wyświetl pracowników</a>
+        <a href="./hr-3.php">Aktualizuj pracownika</a>
+        <a href="./hr-4.php">Usuń pracownika</a>
         <a href="#">Najstarszy i najmłodszy pracownik</a>
         <a href="#">Średni wiek pracowników</a>
         <a href="#">Pracownicy z urodzinami w ciągu 2 tygodni</a>

@@ -2,59 +2,62 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>CRM Handler</title>
+    <title>HR Handler</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <h2>CRM Handler</h2>
+    <h2>HR Handler</h2>
     <div>
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') $option = $_POST["option"];
     else $option = $_GET["option"];
     switch ($option) {
         case 1:
-            if (!empty($_POST["name"]) && !empty($_POST["email"])) {
+            if (!empty($_POST["name"]) && !empty($_POST["date"]) && !empty($_POST["department"]) && !empty($_POST["position"])) {
                 $name = $_POST["name"];
-                $email = $_POST["email"];
-                $subscription = $_POST["subscription"];
+                $date = $_POST["date"];
+                $department = $_POST["department"];
+                $position = $_POST["position"];
+                $permissions = $_POST["permissions"];
                 $id = uniqid();
-                $data = array($id, $name, $email, $subscription);
-                $handle = fopen('./crm.csv', 'a');
+                $data = array($id, $name, $date, $department, $position, $permissions);
+                $handle = fopen('./hr.csv', 'a');
                 fputcsv($handle, $data);
                 fclose($handle);
-                echo '<h3>Klient został dodany.</h3>';
+                echo '<h3>Pracownik został dodany.</h3>';
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
         case 2:
-        case 5:
             echo '<style>div{height: auto;padding: 3vw;}</style>';
-            $file = './crm.csv';
+            $file = './hr.csv';
             $handle = fopen($file, 'r');
             fgetcsv($handle);
             echo "<table>";
-            if ($option == 2) echo "<tr><th>ID</th><th>Imię i nazwisko</th><th>Adres e-mail</th><th>Subskrypcja</th></tr>";
-            else echo "<tr><th>Adres e-mail</th></tr>";
+            echo "<tr><th>ID</th><th>Imię i nazwisko</th><th>Data urodzenia</th><th>Oddział</th><th>Pozycja</th><th>Uprawnienia</th></tr>";
             while (($data = fgetcsv($handle)) !== false) {
-                if ($option == 2) echo "<tr><td>$data[0]</td><td>$data[1]</td><td>$data[2]</td><td>$data[3]</td></tr>";
-                else echo "<tr><td>$data[2]</td></tr>";
+                echo "<tr><td>$data[0]</td><td>$data[1]</td><td>$data[2]</td><td>$data[3]</td><td>$data[4]</td><td>$data[5]</td></tr>";
             }
             echo "</table>";
             fclose($handle);
             break;
         case 3:
-            if (!empty($_POST["id"]) && !empty($_POST["name"]) && !empty($_POST["email"])) {
+            if (!empty($_POST["id"]) && !empty($_POST["name"]) && !empty($_POST["date"]) && !empty($_POST["department"]) && !empty($_POST["position"])) {
                 $id = $_POST["id"];
                 $name = $_POST["name"];
-                $email = $_POST["email"];
-                $subscription = $_POST["subscription"];
-                $handle = fopen('./crm.csv', 'r+');
+                $date = $_POST["date"];
+                $department = $_POST["department"];
+                $position = $_POST["position"];
+                $permissions = $_POST["permissions"];
+                $handle = fopen('./hr.csv', 'r+');
                 $found = false;
                 $updatedData = [];
                 while (($data = fgetcsv($handle)) !== false) {
                     if ($data[0] == $id) {
                         $data[1] = $name;
-                        $data[2] = $email;
-                        $data[3] = $subscription;
+                        $data[2] = $date;
+                        $data[3] = $department;
+                        $data[4] = $position;
+                        $data[5] = $permissions;
                         $found = true;
                     }
                     $updatedData[] = $data;
@@ -63,15 +66,15 @@
                     ftruncate($handle, 0);
                     rewind($handle);
                     foreach ($updatedData as $data) fwrite($handle, implode(',', $data) . PHP_EOL);
-                    echo '<h3>Klient został zaktualizowany.</h3>';
-                } else echo '<h3>Klient o podanym ID nie istnieje.</h3>';
+                    echo '<h3>Pracownik został zaktualizowany.</h3>';
+                } else echo '<h3>Pracownik o podanym ID nie istnieje.</h3>';
                 fclose($handle);
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
         case 4:
             if (isset($_POST["id"])) {
                 $id = $_POST["id"];
-                $handle = fopen('./crm.csv', 'r+');
+                $handle = fopen('./hr.csv', 'r+');
                 $found = false;
                 $updatedData = [];
                 while (($data = fgetcsv($handle)) !== false) {
@@ -85,8 +88,8 @@
                     ftruncate($handle, 0);
                     rewind($handle);
                     foreach ($updatedData as $data) fwrite($handle, implode(',', $data) . PHP_EOL);
-                    echo '<h3>Klient został usunięty.</h3>';
-                } else echo '<h3>Klient o podanym ID nie istnieje.</h3>';
+                    echo '<h3>Pracownik został usunięty.</h3>';
+                } else echo '<h3>Pracownik o podanym ID nie istnieje.</h3>';
                 fclose($handle);
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
@@ -95,8 +98,8 @@
             echo '<h3>Błąd: Nieprawidłowy sposób dostępu do tego skryptu.</h3>';
             break;
     }
-    if (in_array($option, [1, 3, 4])) echo '<a href="./crm-' . $option . '.php">Wróć</a>';
-    else echo '<a href="./crm.php">Wróć</a>';
+    if (in_array($option, [1, 3, 4])) echo '<a href="./hr-' . $option . '.php">Wróć</a>';
+    else echo '<a href="./hr.php">Wróć</a>';
     ?>
     </div>
 </body>

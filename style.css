@@ -32,7 +32,7 @@ h3 {
 
 div {
     display: flex;
-    height: 90vh;
+    height: 120vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -54,6 +54,10 @@ a {
     border-radius: 1vw;
     cursor: pointer;
     transition: 0.5s;
+}
+
+a[href="#"] {
+    text-decoration: line-through;
 }
 
 a:hover {
@@ -107,17 +111,10 @@ input:nth-last-child(1):hover {
     filter: brightness(1.1);
 }
 
-table {
-    width: 35%;
-    border-collapse: collapse;
-}
-
 table, th, td {
+    border-collapse: collapse;
     border: 0.2vw solid rgb(35, 35, 35);
     font-size: 0.8vw;
-}
-
-th, td {
     padding: 0.5vw;
     text-align: left;
     background-color: dodgerblue;
