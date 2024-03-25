@@ -9,26 +9,19 @@
     <h2>Sprzedaż Handler</h2>
     <div>
     <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') $option = $_POST["option"];
-    else $option = $_GET["option"];
+    $option = $_POST["option"] ?? $_GET["option"];
     switch ($option) {
         case 1:
             if (!empty($_POST["name"]) && !empty($_POST["price"]) && !empty($_POST["date"])) {
-                $name = $_POST["name"];
-                $price = $_POST["price"];
-                $date = $_POST["date"];
-                $id = uniqid();
-                $data = array($id, $name, $price, $date);
                 $handle = fopen('./sales.csv', 'a');
-                fputcsv($handle, $data);
+                fputcsv($handle, [uniqid(), $_POST["name"], $_POST["price"], $_POST["date"]]);
                 fclose($handle);
                 echo '<h3>Transakcja została dodana.</h3>';
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
         case 2:
             echo '<style>div{height: auto;padding: 3vw;}</style>';
-            $file = './sales.csv';
-            $handle = fopen($file, 'r');
+            $handle = fopen('./sales.csv', 'r');
             fgetcsv($handle);
             echo "<table>";
             echo "<tr><th>ID</th><th>Produkt</th><th>Cena</th><th>Data</th></tr>";
@@ -66,7 +59,7 @@
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
         case 4:
-            if (isset($_POST["id"])) {
+            if (!empty($_POST["id"])) {
                 $id = $_POST["id"];
                 $handle = fopen('./sales.csv', 'r+');
                 $found = false;
@@ -87,7 +80,6 @@
                 fclose($handle);
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
-
         default:
             echo '<h3>Błąd: Nieprawidłowy sposób dostępu do tego skryptu.</h3>';
             break;

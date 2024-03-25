@@ -9,18 +9,12 @@
     <h2>CRM Handler</h2>
     <div>
     <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') $option = $_POST["option"];
-    else $option = $_GET["option"];
+    $option = $_POST["option"] ?? $_GET["option"];
     switch ($option) {
         case 1:
             if (!empty($_POST["name"]) && !empty($_POST["email"])) {
-                $name = $_POST["name"];
-                $email = $_POST["email"];
-                $subscription = $_POST["subscription"];
-                $id = uniqid();
-                $data = array($id, $name, $email, $subscription);
                 $handle = fopen('./crm.csv', 'a');
-                fputcsv($handle, $data);
+                fputcsv($handle, [uniqid(), $_POST["name"], $_POST["email"], $_POST["subscription"]]);
                 fclose($handle);
                 echo '<h3>Klient został dodany.</h3>';
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
@@ -28,8 +22,7 @@
         case 2:
         case 5:
             echo '<style>div{height: auto;padding: 3vw;}</style>';
-            $file = './crm.csv';
-            $handle = fopen($file, 'r');
+            $handle = fopen('./crm.csv', 'r');
             fgetcsv($handle);
             echo "<table>";
             if ($option == 2) echo "<tr><th>ID</th><th>Imię i nazwisko</th><th>Adres e-mail</th><th>Subskrypcja</th></tr>";
@@ -69,7 +62,7 @@
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
         case 4:
-            if (isset($_POST["id"])) {
+            if (!empty($_POST["id"])) {
                 $id = $_POST["id"];
                 $handle = fopen('./crm.csv', 'r+');
                 $found = false;
@@ -90,7 +83,6 @@
                 fclose($handle);
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
-
         default:
             echo '<h3>Błąd: Nieprawidłowy sposób dostępu do tego skryptu.</h3>';
             break;

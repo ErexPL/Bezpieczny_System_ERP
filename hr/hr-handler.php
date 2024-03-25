@@ -9,28 +9,19 @@
     <h2>HR Handler</h2>
     <div>
     <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') $option = $_POST["option"];
-    else $option = $_GET["option"];
+    $option = $_POST["option"] ?? $_GET["option"];
     switch ($option) {
         case 1:
             if (!empty($_POST["name"]) && !empty($_POST["date"]) && !empty($_POST["department"]) && !empty($_POST["position"])) {
-                $name = $_POST["name"];
-                $date = $_POST["date"];
-                $department = $_POST["department"];
-                $position = $_POST["position"];
-                $permissions = $_POST["permissions"];
-                $id = uniqid();
-                $data = array($id, $name, $date, $department, $position, $permissions);
                 $handle = fopen('./hr.csv', 'a');
-                fputcsv($handle, $data);
+                fputcsv($handle, [uniqid(), $_POST["name"], $_POST["date"], $_POST["department"], $_POST["position"], $_POST["permissions"]]);
                 fclose($handle);
                 echo '<h3>Pracownik został dodany.</h3>';
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
         case 2:
             echo '<style>div{height: auto;padding: 3vw;}</style>';
-            $file = './hr.csv';
-            $handle = fopen($file, 'r');
+            $handle = fopen('./hr.csv', 'r');
             fgetcsv($handle);
             echo "<table>";
             echo "<tr><th>ID</th><th>Imię i nazwisko</th><th>Data urodzenia</th><th>Oddział</th><th>Pozycja</th><th>Uprawnienia</th></tr>";
@@ -72,7 +63,7 @@
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
         case 4:
-            if (isset($_POST["id"])) {
+            if (!empty($_POST["id"])) {
                 $id = $_POST["id"];
                 $handle = fopen('./hr.csv', 'r+');
                 $found = false;
@@ -93,7 +84,6 @@
                 fclose($handle);
             } else echo '<h3>Błąd: Wszystkie pola formularza są wymagane.</h3>';
             break;
-
         default:
             echo '<h3>Błąd: Nieprawidłowy sposób dostępu do tego skryptu.</h3>';
             break;
